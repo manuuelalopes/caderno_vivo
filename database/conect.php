@@ -11,7 +11,7 @@ try {
         $user,
         $pass
     );
-    echo "conexão efetivada! <br>";
+    echo ". <br>";
     return $conexao;
 } catch (PDOException $e){
     echo "erro: " . $e->getMessage();

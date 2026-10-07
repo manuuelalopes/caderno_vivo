@@ -1,4 +1,5 @@
 <?php 
+require_once  __DIR__ . '/../database/conect.php';
 //CADASTRAR PRODUTOS
 function cadastrar_produto($conexao,$nome_produto,$preco,$data_validade,$descricao,$quantidade_estoq,$imagem_url){
          $sql = "INSERT INTO produtos (nome_produto, preco, data_validade, descricao, quantidade_estoq, imagem_url) VALUES (:nome_produto, :preco, :data_validade, :descricao, :quantidade_estoq, :imagem_url)";
@@ -43,12 +44,13 @@ $sql = "SELECT nome_produto, preco, data_validade, descricao, quantidade_estoq, 
         $stmt->execute();
 
         $produtos =$stmt->fetch (PDO::FETCH_ASSOC);
-        echo"Nome do produto: {$nome_produto['nome']} <br>";
-        echo"Preço: {$preco['preco']} <br>";
-        echo"data_validade: {$data_validade['data_validade']} <br>";
-        echo"descricao: {$descricao['descricao']} <br>";
-        echo"descricao: {$quantidade_estoq['quantidade_estoq']} <br>";
-        echo"descricao: {$imagem_url['imagem_url']} <br>";
+        echo"Nome do produto: {$produtos['nome_produto']} <br>";
+        echo"Preço: {$produtos['preco']} <br>";
+        echo"data_validade: {$produtos['data_validade']} <br>";
+        echo"descricao: {$produtos['descricao']} <br>";
+        echo"quantidade_estoq: {$produtos['quantidade_estoq']} <br>";
+        $img = $produtos['imagem_url'];
+        echo"<img src='$img' alt='Descrição da imagem' width=200px height=200px /><br>";
         echo "<hr>";
         } catch (PDOException $e){
             echo"Erro: " .$e->getMessage(); 
@@ -70,7 +72,7 @@ function atualizar($conexao, $id,$nome_produto,$preco,$data_validade,$descricao,
             $stmt->bindParam(":quantidade_estoq", $quantidade_estoq);
             $stmt->bindParam(":imagem_url", $imagem_url);
             $stmt->execute();
-            echo "Aluno inserido com sucesso!";
+            echo "Produto atualizado!";
         } catch (PDOException $e) {
             echo "Erro: " . $e->getMessage();
         }
@@ -101,10 +103,83 @@ function cartela_produtos($conexao){
                     echo "Erro: " . $e->getMessage();
                 }
 }
+// ---------------------------------------------------------------//
+//FUNÇOES LOGIN 
 
+//LOGIN
+function cadastra_user($conexao, $email, $senha){
+         $sql = "INSERT INTO usuarios (email, senha) VALUES (:email, :senha)";
 
+        try {
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":senha", $senha);
+            $stmt->execute();
+            echo "Usuário cadastrado!";
+        } catch (PDOException $e) {
+            echo "Erro: " . $e->getMessage();
+        }
 
+} //CONSULTA SÓ UM USER
 
+function consulta_user($conexao, $email){
+    // Corrigido: sem a vírgula depois de 'senha'
+    $sql = "SELECT id, email, senha FROM usuarios WHERE email = :email";
 
+    try {
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindParam(":email", $email);
+        $stmt->execute();
 
-?>
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $usuario;
+    } catch (PDOException $e) {
+        echo "Erro: " . $e->getMessage();
+        return null;
+    }
+}
+// CONSULTA TODOS OS USERS 
+function listar_usuarios($conexao) {
+    $sql = "SELECT id, email, telefone FROM usuarios";
+
+    try {
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Erro: " . $e->getMessage();
+        return [];
+    }
+}
+
+// ATUALIZAR USER
+function atualizar_usuario($conexao, $id, $email, $senha) {
+    $sql = "UPDATE usuarios SET email = :email, senha = :senha WHERE id = :id";
+
+    try {
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":senha", $senha);
+        $stmt->execute();
+        echo "Usuário atualizado com sucesso!";
+    } catch (PDOException $e) {
+        echo "Erro: " . $e->getMessage();
+    }
+}
+
+//DELETAR USER 
+function deletar_usuario($conexao, $id) {
+    $sql = "DELETE FROM usuarios WHERE id = :id";
+
+    try {
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        echo "Usuário excluído com sucesso!";
+    } catch (PDOException $e) {
+        echo "Erro: " . $e->getMessage();
+    }
+}
+
+ ?>

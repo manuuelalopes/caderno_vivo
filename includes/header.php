@@ -24,7 +24,7 @@
         }
 </style>
     <nav>
-        <img src="/imagens/logo.jpg" alt="error" class="logo">
+        
         <h1>CadernoVivo</h1>
         <div>
             <a href="/cadernovivo/index.php">Inicio</a>
