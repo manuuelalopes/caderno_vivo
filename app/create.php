@@ -21,7 +21,7 @@ require_once __DIR__ . '/../includes/functions.php';
         <form action="" method="post"> 
             <label for="nome_produto">Nome do produto:</label>
             <input type="text" name="nome_produto" id="nome_produto"><br>
-            <label for="preco">Preço;</label>
+            <label for="preco">Preço:</label>
             <input type="text" name="preco" id="preco"><br>
             <label for="data_validade">Data de Validade:</label>
             <input type="date" name="data_validade" id="data_validade"><br>

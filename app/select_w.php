@@ -18,7 +18,7 @@
             </form>
              <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        consultar ($conexao, $_POST['id']); 
+        consultar($conexao, $_POST['id']); 
         }
         ?>
     </main>

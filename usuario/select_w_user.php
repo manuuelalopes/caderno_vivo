@@ -17,7 +17,7 @@ require_once __DIR__ . '/../includes/functions.php';
         <h2>Buscar Usuário por E-mail</h2>
 
         <!-- Formulário que envia o e-mail -->
-        <form action="" method="get">
+        <form action="" method="post">
             <label for="email">Digite o E-mail:</label>
             <input type="email" name="email" id="email" required>
             <input type="submit" value="Buscar">
@@ -30,7 +30,7 @@ require_once __DIR__ . '/../includes/functions.php';
         if (isset($_POST['email'])) {
             $email = $_POST['email'];
             
-            // Chama a sua função consulta_user
+            // Chama funçao consulta_user
             $usuario = consulta_user($conexao, $email);
 
             if ($usuario) {

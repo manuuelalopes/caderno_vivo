@@ -81,7 +81,7 @@ function atualizar($conexao, $id,$nome_produto,$preco,$data_validade,$descricao,
 // Cartela de produtos 
 function cartela_produtos($conexao){
      
-        $sql = "SELECT *FROM produtos";
+        $sql = "SELECT * FROM produtos";
         
         try {
             $stmt = $conexao->prepare($sql);
@@ -90,13 +90,13 @@ function cartela_produtos($conexao){
             $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
             foreach ($produtos as $produto) {
-                echo "ID: {$produtos['id']} <br>";
-                echo "nome_produto: {$produtos['nome_produto']} <br>";
-                echo "preco: {$produtos['preco']} <br>";
-                echo "data_validade: {$produtos['data_validade']} <br>";
-                echo "descricao: {$produtos['descricao']} <br>";
-                echo "quantidade_estoq: {$produtos['quantidade_estoq']} <br>";
-                echo "iamgem_url: {$produtos['imagem_url']} <br>";
+                echo "ID: {$produto['id']} <br>";
+                echo "nome_produto: {$produto['nome_produto']} <br>";
+                echo "preco: {$produto['preco']} <br>";
+                echo "data_validade: {$produto['data_validade']} <br>";
+                echo "descricao: {$produto['descricao']} <br>";
+                echo "quantidade_estoq: {$produto['quantidade_estoq']} <br>";
+                echo "iamgem_url: {$produto['imagem_url']} <br>";
                 echo "<hr>";
                 }
                 } catch (PDOException $e) {
@@ -107,12 +107,15 @@ function cartela_produtos($conexao){
 //FUNÇOES LOGIN 
 
 //LOGIN
-function cadastra_user($conexao, $email, $senha){
-         $sql = "INSERT INTO usuarios (email, senha) VALUES (:email, :senha)";
+function cadastra_user($conexao, $nome, $telefone, $email, $endereco, $senha, ){
+         $sql = "INSERT INTO usuarios (nome, telefone, email, endereco, senha) VALUES (:nome, :telefone, :email, :endereco, :senha)";
 
         try {
             $stmt = $conexao->prepare($sql);
+            $stmt->bindParam(":nome", $nome);
+            $stmt->bindParam(":telefone", $telefone);
             $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":endereco", $endereco);
             $stmt->bindParam(":senha", $senha);
             $stmt->execute();
             echo "Usuário cadastrado!";
@@ -153,13 +156,16 @@ function listar_usuarios($conexao) {
 }
 
 // ATUALIZAR USER
-function atualizar_usuario($conexao, $id, $email, $senha) {
-    $sql = "UPDATE usuarios SET email = :email, senha = :senha WHERE id = :id";
+function atualizar_usuario($conexao, $id, $nome, $telefone, $email, $endereco, $senha) {
+    $sql = "UPDATE usuarios SET nome = :nome, telefone = :telefone, email = :email, endereco = :endereco, senha = :senha WHERE id = :id";
 
     try {
         $stmt = $conexao->prepare($sql);
         $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":nome", $nome);
+        $stmt->bindParam(":telefone", $telefone);
         $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":endereco", $endereco);
         $stmt->bindParam(":senha", $senha);
         $stmt->execute();
         echo "Usuário atualizado com sucesso!";

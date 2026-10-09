@@ -28,7 +28,6 @@ require_once __DIR__ . '/../includes/functions.php';
                     <tr>
                         <th>ID</th>
                         <th>E-mail</th>
-                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
