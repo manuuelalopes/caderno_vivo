@@ -96,7 +96,8 @@ function cartela_produtos($conexao){
                 echo "data_validade: {$produto['data_validade']} <br>";
                 echo "descricao: {$produto['descricao']} <br>";
                 echo "quantidade_estoq: {$produto['quantidade_estoq']} <br>";
-                echo "iamgem_url: {$produto['imagem_url']} <br>";
+                $img = $produtos['imagem_url'];
+                echo"<img src='$img' alt='Descrição da imagem' width=200px height=200px /><br>";
                 echo "<hr>";
                 }
                 } catch (PDOException $e) {
