@@ -198,6 +198,30 @@
                 <a href="produto.php?id=4" class="btn-comprar">Ver Detalhes</a>
             </div>
 
+            <div class="card-produto">
+                <img src="https://via.placeholder.com/200" alt="Caderno Pautado">
+                <h3>Caderno Pautado A5</h3>
+                <p class="preco">R$ 29,90</p>
+                <a href="produto.php?id=1" class="btn-comprar">Ver Detalhes</a>
+            </div>
+
+             <div class="card-produto">
+                <img src="https://via.placeholder.com/200" alt="Caderno Pautado">
+                <h3>Caderno Pautado A5</h3>
+                <p class="preco">R$ 29,90</p>
+                <a href="produto.php?id=1" class="btn-comprar">Ver Detalhes</a>
+            </div>
+
+             <div class="card-produto">
+                <img src="https://via.placeholder.com/200" alt="Caderno Pautado">
+                <h3>Caderno Pautado A5</h3>
+                <p class="preco">R$ 29,90</p>
+                <a href="produto.php?id=1" class="btn-comprar">Ver Detalhes</a>
+            </div>
+
+
+
+
         </div>
 
     </main>

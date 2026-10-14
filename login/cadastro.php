@@ -165,27 +165,30 @@
 
                 <button type="submit" class="btn-submit">Cadastrar</button>
             </form>
+            <br>
+                <div class="container-btn-voltar">
+                <a href="../index.php" class="btn-voltar">← Voltar para o Início</a>
+                </div>
+        
 
             <?php
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $nome     = $_POST['nome'];
-                $telefone = $_POST['telefone'];
-                $endereco = $_POST['endereco'];
-                $email    = $_POST['email'];
-                $senha    = $_POST['senha'];
+                $nome     = $_POST['nome'] ??'';
+                $telefone = $_POST['telefone'] ??'';
+                $endereco = $_POST['endereco'] ??'';
+                $email    = $_POST['email'] ??'';
+                $senha    = $_POST['senha'] ??'';
 
                 // Aqui você chama a sua função do banco de dados para cadastrar
                 // Exemplo com função:
                 $sucesso = cadastra_user($conexao, $nome, $telefone, $endereco, $email, $senha);
 
                 if ($sucesso) {
-                    echo '<div class="alert-success">Cadastro realizado com sucesso! Redirecionando...</div>';
-                    header("refresh:2; url=login.php");
+                   return true;
                 } else {
                     echo '<div class="alert-error">Erro ao cadastrar. Tente novamente mais tarde.</div>';
                 }
-            }
-            ?>
+            } ?>
         </div>
     </main>
 

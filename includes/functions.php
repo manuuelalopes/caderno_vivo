@@ -119,7 +119,7 @@ function cadastra_user($conexao, $nome, $telefone, $email, $endereco, $senha, ){
             $stmt->bindParam(":endereco", $endereco);
             $stmt->bindParam(":senha", $senha);
             $stmt->execute();
-            echo "Usuário cadastrado!";
+            return true;
         } catch (PDOException $e) {
             echo "Erro: " . $e->getMessage();
         }
