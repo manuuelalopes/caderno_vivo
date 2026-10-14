@@ -1,3 +1,4 @@
+
 <header> 
 <style>
         nav {
@@ -33,6 +34,8 @@
             <a href="/cadernovivo/app/select.php">Catálogo</a>
             <a href="/cadernovivo/app/select_w.php">Consultar</a>
             <a href="/cadernovivo/app/update.php">Atualizar</a>
+            <a href="/cadernovivo/login/login.php">Fazer Login</a>
+        
             
         </div>
     </nav>
