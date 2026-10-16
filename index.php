@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +7,10 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #fff0f5; 
+            background-color: #fff0f5;
             margin: 20px;
         }
-        
+
         nav {
             display: flex;
             align-items: center;
@@ -19,11 +18,11 @@
         }
 
         .logo {
-            width: 120px; 
+            width: 120px;
             height: auto;
-            border-radius: 12px; 
+            border-radius: 12px;
         }
-        
+
         nav a {
             text-decoration: none;
             color: #5a3e36;
@@ -153,8 +152,9 @@
 </head>
 
 <body>
-    <?php include __DIR__ . '/includes/header.php'; ?>
-
+    <?php include __DIR__ . '/includes/header.php';
+    cartela_produtos($conexao);
+     ?>
     <!-- BANNER DE DESTAQUE -->
     <div class="banner-principal">
         <!-- Substitua 'sua-imagem-banner.jpg' pelo caminho da sua imagem real -->
@@ -165,10 +165,10 @@
         <h2>Produtos Mais Vendidos</h2>
 
         <div class="grid-produtos">
-            
+
             <!-- Produto 1 -->
             <div class="card-produto">
-                <img src="https://via.placeholder.com/200" alt="Caderno Pautado">
+                <img src="https://via.placeholder.com/200" alt="Caderno">
                 <h3>Caderno Pautado A5</h3>
                 <p class="preco">R$ 29,90</p>
                 <a href="produto.php?id=1" class="btn-comprar">Ver Detalhes</a>
@@ -205,22 +205,19 @@
                 <a href="produto.php?id=1" class="btn-comprar">Ver Detalhes</a>
             </div>
 
-             <div class="card-produto">
+            <div class="card-produto">
                 <img src="https://via.placeholder.com/200" alt="Caderno Pautado">
                 <h3>Caderno Pautado A5</h3>
                 <p class="preco">R$ 29,90</p>
                 <a href="produto.php?id=1" class="btn-comprar">Ver Detalhes</a>
             </div>
 
-             <div class="card-produto">
+            <div class="card-produto">
                 <img src="https://via.placeholder.com/200" alt="Caderno Pautado">
                 <h3>Caderno Pautado A5</h3>
                 <p class="preco">R$ 29,90</p>
                 <a href="produto.php?id=1" class="btn-comprar">Ver Detalhes</a>
             </div>
-
-
-
 
         </div>
 
@@ -228,4 +225,5 @@
 
     <?php include __DIR__ . '/includes/footer.php'; ?>
 </body>
+
 </html>

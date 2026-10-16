@@ -128,7 +128,8 @@ $chave_pix_ficticia = "00020126580014br.gov.bcb.pix0136cadernovivo-pix-ficticio-
 
     <main>
         <div class="pix-card">
-            <h1>Pagamento via PIX 💖</h1>
+            <h1>Pagamento via PIX 
+            </h1>
             <p>Escaneie o QR Code abaixo ou copie a chave PIX para pagar:</p>
 
             <div class="price-tag">
@@ -144,7 +145,7 @@ $chave_pix_ficticia = "00020126580014br.gov.bcb.pix0136cadernovivo-pix-ficticio-
                 <input type="text" value="<?= $chave_pix_ficticia ?>" id="chavePix" readonly>
             </div>
 
-            <button class="btn-action" id="btnPagar" onclick="simularPagamento()">Copiar Código e Confirmar Pagamento 💖</button>
+            <button class="btn-action" id="btnPagar" onclick="simularPagamento()">Copiar Código e Confirmar Pagamento </button>
 
             <!-- Spinner enquanto aguarda 4 segundos -->
             <div class="loading-box" id="loadingBox">
