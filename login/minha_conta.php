@@ -1,14 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../includes/functions.php';
-
-if (!isset($_SESSION['id'])) {
-    header("Location: login.php");
-    exit();
-}
-
-$id_usuario = $_SESSION['id'];
-$usuario = consulta_user($conexao, $id_usuario);
+require_once __DIR__ . '/../login/verifica_user.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,8 +26,9 @@ $usuario = consulta_user($conexao, $id_usuario);
     <?php include '../includes/header.php'; ?>
 
     <main class="conta-card">
+        <?php $usuario = consulta_user($conexao, $email);?> 
         <h1>Minha Conta</h1>
-        <p>Bem-vindo(a), <?= htmlspecialchars($usuario['nome']) ?>!</p>
+        <p>Bem-vindo(a), <?= htmlspecialchars($usuario['$nome']) ?>!</p>
         <hr style="margin: 15px 0; border: none; border-top: 1px solid #f6d8e5;">
 
         <div class="info-group">

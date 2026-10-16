@@ -188,5 +188,18 @@ function deletar_usuario($conexao, $id) {
         echo "Erro: " . $e->getMessage();
     }
 }
-
+//----------------------------------------------
+//FUNCTION ESPECIAL PARA USO DO INDEX (FIZ PARA NÃO PRECISAR ALTERAR CARTELA_PRODUTOS)
+// Função nova exclusiva para a Vitrine/Página Inicial
+function listar_produtos_loja($conexao) {
+    $sql = "SELECT * FROM produtos ORDER BY id DESC";
+    
+    try {
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return [];
+    }
+}
  ?>
